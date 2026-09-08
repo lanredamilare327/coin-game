@@ -8,7 +8,22 @@
 <body>
   <button
   onclick="
-    const randomNumber = Math.random();
+   tossCoin('heads');
+  "
+  >heads</button>
+  <button
+  onclick="
+  tossCoin('tails');
+  "
+  >tails</button>
+
+  <p class="js-guess"></p>
+  <p class="js-result"></p>
+  <p class="js-outcome"></p>
+
+  <script>
+    function tossCoin (guess) {
+       const randomNumber = Math.random();
      let result;
 
     if (randomNumber < 0.5) {
@@ -17,53 +32,22 @@
       result = 'tails';
     }
 
-  console.log(result);
+ let outcome = result === guess? 'You win' : 'You lose';
+   
+let displayGuess = `You guessed ${guess}.`
+let displayResult = `Computer picked ${result}.`
+let showOutcome = `${outcome}.`;
 
-  const guess = 'heads';
-  // if (result === guess) {
-  //   console.log('You win');
-  // } else {
-  //   console.log('You lose');
-  // }
+    document.querySelector('.js-guess').innerHTML =
+      displayGuess;
+     document.querySelector('.js-result').innerHTML= displayResult;
+     document.querySelector('.js-outcome').innerHTML = 
+     showOutcome;
+    
+    }
 
-  outcome = result === guess? 'You win' : 'You lose'
-  console.log(outcome);
-
-  alert(`You guessed heads.Computer picked ${result}.${outcome}.`);
-  "
-  >heads</button>
-  <button
-  onclick="
-  const randomNumber = Math.random();
-  let result;
-
-  if (randomNumber < 0.5) {
-    result = 'heads';
-  } else {
-    result = 'tails';
-  }
-
-  console.log(result);
-
-  const guess = 'tails';
-  outcome = guess === result? 'You win':'You lose'
-  console.log(outcome);
-
-  alert(`You guessed tails.Computer picked ${result}.${outcome}. `);
-  "
-  >tails</button>
-  <script>
-
-
-    // const guess = 'heads';
-    // if (result === guess) {
-    //   console.log('You win');
-    // } else {
-    //   console.log('You lose');
-    // }
-
-  //  result = randomNumber < 0.5 ? 'heads':'tails';
-  //   console.log(result === guess ? 'You win':'You lose');
+    
   </script>
+
 </body>
 </html>
